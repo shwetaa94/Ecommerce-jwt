@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    justify-content: space-between; /* Maintains spacing between logo and options */
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    
+  }
+  
+  .logo {
+    flex: 1; /* Allocates remaining space proportionally to logo */
+    display: flex; /* Allows styling child elements (e.g., logo image) */
+    align-items: center; /* Aligns logo image vertically within the logo container */
+    margin-right: 10px; /* Adds space between logo and options */
+    font-weight: bold; /* Makes logo text bold */
+    font-size: 2rem; 
+  }
+  
+
+  .options {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0; /* Remove margin added previously */
+  }
+  
+  .nav {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 16px;
+    margin-right: 10px; /* Maintain spacing between links */
+    border-radius: 5px;
+  }
+  
+  .nav:hover {
+    background-color: #ddd;
+  }
+  
+  .nav.active {
+    background-color: #007bff;
+    color: white;
+  }

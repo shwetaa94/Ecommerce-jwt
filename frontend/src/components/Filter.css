@@ -1,0 +1,41 @@
+.filter-section {
+    padding: 30px;
+    margin-bottom: 20px;
+    width:200px;
+    height:100vh;
+  }
+   
+  .filter-group {
+    margin-bottom: 10px;
+  }
+  
+  .filter-group h3 {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .filter-list li {
+    margin: 5px;
+  }
+  
+
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0067cc;
+  }
+  

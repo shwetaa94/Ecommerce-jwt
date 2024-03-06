@@ -1,0 +1,14 @@
+.layout {
+    display: flex; /* Makes the layout container a flexbox */
+  }
+  
+  .filter {
+    width: 200px; /* Sets the width of the filter component */
+    border-right: 1px solid #ddd; /* Adds a border on the right side */
+    padding: 10px; /* Adds padding to the filter component */
+  }
+  
+  .product {
+    flex: 1; /* Allows the product component to fill the remaining space */
+    padding: 10px; /* Adds padding to the product component */
+  }

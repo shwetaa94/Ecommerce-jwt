@@ -1,0 +1,37 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+    background-color: #f0f0f0;
+    width: 100%;
+    flex: 0 0 auto; /* Allows footer to grow if content overflows */
+  }
+  
+  .footer-column {
+    flex: 1;
+    margin: 10px;
+    text-align: left;
+  }
+  
+  .footer-column:last-child {
+    margin-right: 0;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+  }
+  
+  .footer-column li {
+    margin-bottom: 5px;
+    font-size: large;
+    /* Added underline styling */
+    text-decoration: none; /* Remove default underline */
+    color: inherit; /* Inherit color from parent element */
+  }
+  
+  .footer-column li:hover {
+    /* Apply underline and blue color on hover */
+    text-decoration: underline;
+    color: blue;
+  }
+  

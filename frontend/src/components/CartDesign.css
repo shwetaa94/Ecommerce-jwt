@@ -1,0 +1,116 @@
+/* General Styles */
+.cart {
+    display: flex; /* Use flex for responsive layout */
+    flex-direction: row;
+    width: 100%; /* Full-width on large screens */
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding and border in width calculation */
+  }
+  
+  .cart-image-container {
+    width: 20%; /* 20% width for image container */
+    display: flex;
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+    overflow: hidden; /* Prevent image overflow */
+  }
+  
+  .cart-image {
+    height: 150px;
+    object-fit: cover; /* Ensure image covers container */
+  }
+  
+  .cart-details {
+    width: 80%; /* 80% width for details */
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+  }
+  
+
+  /* Button Styles */
+  .add-remove-item {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 10px;
+    margin-bottom: 12px;
+  }
+  .add-remove-item button {
+    background-color:#007bffde;
+    color:white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px; /* Adjust spacing between buttons */
+    font-size: 24px; /* Adjust font size */
+  }
+  
+  .add-remove-item button:hover {
+    background-color: #f00; /* Subtle hover effect */
+  }
+  
+
+  
+  /* Content Styles within cart-details */
+  .cart-title,
+  .cart-brand,
+  .cart-description,
+  .cart-price,
+  .cart-stock {
+    /* Apply common styles to content elements */
+    margin-bottom: 5px; /* Add spacing between elements */
+  }
+  .cart-title,
+  .cart-brand,
+  .cart-description {
+    font-size: 18px; /* Adjust for readability */
+    line-height: 0.8; /* Improve spacing for text */
+  }
+  .cart-price {
+    display: flex; /* Arrange price elements in a row */
+  }
+  
+  .original-price,
+  .discounted-price,
+  .discount-percentage {
+    margin: 3px; /* Add spacing between price elements */
+  }
+  
+  .cart-stock {
+    display: flex; /* Arrange stock and rating in a row */
+    align-items: center;
+    margin:3px;
+  }
+  
+  .rating-stars {
+    color: gold;
+  }
+  
+  /* Accessibility Adjustments */
+ 
+   /* Responsive Styles (optional) */
+   @media only screen and (max-width: 768px) {
+    /* Adjust layout for smaller screens here */
+    .cart {
+      flex-direction: column; /* Switch to vertical layout */
+    }
+  
+    .cart-image-container {
+      width: 100%; /* Image takes full width */
+    }
+  
+    .cart-details {
+      width: 100%; /* Details take full width */
+      height: auto;;
+    }
+    .cart-title,
+    .cart-brand,
+    .cart-description {
+      font-size: 12px; /* Adjust for readability */
+      line-height: 1; /* Improve spacing for text */
+    }
+  }
+  
