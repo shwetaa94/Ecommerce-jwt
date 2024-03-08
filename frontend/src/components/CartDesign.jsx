@@ -1,8 +1,12 @@
-import React from "react";
+import React,{useEffect,useContext} from "react";
 import "./CartDesign.css";
 import axios from 'axios';
+import { ProductContext } from "../context/ProductContext";
+import {toast} from "react-hot-toast" ;
+
 const CartDesign = ({
   id,
+  productId,
   title,
   description,
   price,
@@ -14,23 +18,35 @@ const CartDesign = ({
   thumbnail,
   images,
   quantity,
-  
+  getCart,
 }) => {
   const token =localStorage.getItem("token");
   const discountedPrice = Math.round(price * (1 - discountPercentage / 100));
+
+ const { cart, addToCart} = useContext(ProductContext);
+ 
   const handleQuantity =async(e) => {
 
-    if(e.targert.name==="addItem"){quantity=quantity+1;}
-    else if(e.target.name==="subItem"){quantity=quantity-1;}
+    let updatedQuantity ;
+    if(e.target.name==="addItem"){updatedQuantity=quantity+1;}
+    else if(e.target.name==="subItem"){updatedQuantity=quantity-1;}
 
     try{
-        await axios.put(`http://localhost:8080/api/v2/${id}`,{headers:{
-            Authorization: "Bearer " +token}},{quantity})
+        const response = await axios.put(`http://localhost:8080/api/v1/cart/${id}`,{quantity:updatedQuantity},{headers:{
+            Authorization: "Bearer " +token}})
+        console.log("this is caert reposne : ",response)
+        if(response.status===200){
+          toast.success(response.data.message);
+          getCart();
+        }
     }
     catch(error){
+
         console.log("error in updating cart",error);
     }
   }
+
+
   return (
     <div className="cart">
       <div className="cart-image-container">
@@ -56,8 +72,9 @@ const CartDesign = ({
         </div>
 
         <div className="add-remove-item">
-        <button className="remove-item" onClick={handleQuantity} name="addItem">-</button>
-        <button className="add-item" onClick={handleQuantity} name="subItem">+</button>
+        <button className="remove-item" onClick={handleQuantity} name="addItem">+</button>
+        <div>{quantity}</div>
+        <button className="add-item" onClick={handleQuantity} name="subItem">-</button>
         </div>
       </div>
     </div>

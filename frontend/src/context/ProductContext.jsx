@@ -7,7 +7,7 @@ const ProductContextProvider = ({ children }) => {
     const [cart, setCart] = useState([])
     
     const addToCart = (product) => {
-      setCart([...cart, product]); 
+      setCart( product); 
       console.log(cart);
     };
                                  //  {{cart,setCart}}

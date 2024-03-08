@@ -14,7 +14,7 @@ const Home = () => {
         <div className="product">
           <ProductAll />
         </div>
-      </div>
+      </div> 
     </Layout>
   );
 };

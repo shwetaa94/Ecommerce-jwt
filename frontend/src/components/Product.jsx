@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { ProductContext } from "../context/ProductContext";
-import axios from 'axios';
+import axios from "axios";
 import "./Product.css";
 const Product = ({
   id,
@@ -15,59 +15,67 @@ const Product = ({
   thumbnail,
   images,
 }) => {
-  const {cart, addToCart } = useContext(ProductContext);
-  const token =localStorage.getItem("token");
+  const { cart, addToCart } = useContext(ProductContext);
+  const token = localStorage.getItem("token");
 
-  const handleClick = async () => {
+  const addtotheCart = async () => {
     try {
-      // Send POST request to backend API to add item to cart
-      const response = await axios.post(`http://localhost:8080/api/v2/cart`, {
-        headers:{Authorization: "Bearer "+token}},{ productId: id}
+      console.log(token);
+
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/cart",
+        // Request body
+        { productId: id },
+        // Configuration object
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Authorization header
+          },
+        }
       );
 
       // Update cart state with the response data
-      addToCart(response.data.cart);
-
-      console.log('Item added to cart:', response.data.cart);
+      if (response.ok) {
+        addToCart(response.data.cartItems);
+      }
     } catch (error) {
-      console.error('Error adding item to cart:', error);
+      console.error("Error adding item to cart:", error);
     }
   };
-  //   const handleClick=()=>{
-//     addToCart({
-//         id,
-//         title,
-//         description,
-//         price,
-//         discountPercentage,
-//         rating,
-//         stock,
-//         brand,
-//         category,
-//         thumbnail,
-//         images,
-//       });
-    
-//   }
+  //   const addtotheCart=()=>{
+  //     addToCart({
+  //         id,
+  //         title,
+  //         description,
+  //         price,
+  //         discountPercentage,
+  //         rating,
+  //         stock,
+  //         brand,
+  //         category,
+  //         thumbnail,
+  //         images,
+  //       });
+
+  //   }
   //   const {cart, setCart } = useContext(ProductContext);
-//   const addToCart = () => {
-//     // Update cart state by passing the new value directly to setCart
-//     setCart([...cart, {
-//       id,
-//       title,
-//       description,
-//       price,
-//       discountPercentage,
-//       rating,
-//       stock,
-//       brand,
-//       category,
-//       thumbnail,
-//       images,
-//     }]);
-//     console.log(cart);
-//   };
- 
+  //   const addToCart = () => {
+  //     // Update cart state by passing the new value directly to setCart
+  //     setCart([...cart, {
+  //       id,
+  //       title,
+  //       description,
+  //       price,
+  //       discountPercentage,
+  //       rating,
+  //       stock,
+  //       brand,
+  //       category,
+  //       thumbnail,
+  //       images,
+  //     }]);
+  //     console.log(cart);
+  //   };
 
   const discountedPrice = Math.round(price * (1 - discountPercentage / 100));
 
@@ -95,9 +103,7 @@ const Product = ({
           </span>
         </div>
         {/* using contextapi to set cart data */}
-        <button
-          onClick={handleClick}
-          className="add-to-cart-button">
+        <button onClick={addtotheCart} className="add-to-cart-button">
           Add to Cart
         </button>
       </div>
