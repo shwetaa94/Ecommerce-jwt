@@ -2,10 +2,10 @@ import React from "react";
 import './Header.css'
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { ProductContext } from "../context/ProductContext";
+import { CartContext } from "../context/CartContext";
 const Header = () => {
 
-    const {cart} = useContext(ProductContext);
+    const {cart} = useContext(CartContext);
 
   return (
     <div className="header">

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { ProductContext } from "../context/ProductContext";
+import { CartContext } from "../context/CartContext";
 import Layout from "../components/Layout";
 import "./Cart.css";
 import CartDesign from "../components/CartDesign";
@@ -8,7 +8,7 @@ import {toast} from "react-hot-toast" ;
 
 const Cart = () => {
   
-  const { cart ,addToCart } = useContext(ProductContext);
+  const { cart ,addToCart } = useContext(CartContext);
   const token = localStorage.getItem('token');
 
   useEffect(()=>{ getCart() },[]);

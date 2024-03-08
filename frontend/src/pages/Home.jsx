@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "../components/Layout";
 import Filter from "../components/Filter";
 import ProductAll from "./ProductAll";
 import './Home.css'
 const Home = () => {
+  
 
   return (
     <Layout>

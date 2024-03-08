@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { ProductContext } from "../context/ProductContext";
+import { CartContext } from "../context/CartContext";
 import axios from "axios";
 import "./Product.css";
+
 const Product = ({
   id,
   title,
@@ -15,7 +16,8 @@ const Product = ({
   thumbnail,
   images,
 }) => {
-  const { cart, addToCart } = useContext(ProductContext);
+  const { cart, addToCart } = useContext(CartContext);
+  
   const token = localStorage.getItem("token");
 
   const addtotheCart = async () => {

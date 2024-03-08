@@ -1,8 +1,8 @@
-import React,{useEffect,useContext} from "react";
+import React, { useEffect, useContext } from "react";
 import "./CartDesign.css";
-import axios from 'axios';
-import { ProductContext } from "../context/ProductContext";
-import {toast} from "react-hot-toast" ;
+import axios from "axios";
+import { CartContext } from "../context/CartContext";
+import { toast } from "react-hot-toast";
 
 const CartDesign = ({
   id,
@@ -20,32 +20,38 @@ const CartDesign = ({
   quantity,
   getCart,
 }) => {
-  const token =localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   const discountedPrice = Math.round(price * (1 - discountPercentage / 100));
 
- const { cart, addToCart} = useContext(ProductContext);
- 
-  const handleQuantity =async(e) => {
+  const { cart, addToCart } = useContext(CartContext);
 
-    let updatedQuantity ;
-    if(e.target.name==="addItem"){updatedQuantity=quantity+1;}
-    else if(e.target.name==="subItem"){updatedQuantity=quantity-1;}
+  const handleQuantity = async (e) => {
+    let updatedQuantity;
+    if (e.target.name === "addItem") {
+      updatedQuantity = quantity + 1;
+    } else if (e.target.name === "subItem") {
+      updatedQuantity = quantity - 1;
+    }
 
-    try{
-        const response = await axios.put(`http://localhost:8080/api/v1/cart/${id}`,{quantity:updatedQuantity},{headers:{
-            Authorization: "Bearer " +token}})
-        console.log("this is caert reposne : ",response)
-        if(response.status===200){
-          toast.success(response.data.message);
-          getCart();
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/v1/cart/${id}`,
+        { quantity: updatedQuantity },
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
         }
-    }
-    catch(error){
+      );
 
-        console.log("error in updating cart",error);
+      if (response.status === 200) {
+        toast.success(response.data.message);
+        getCart();
+      }
+    } catch (error) {
+      console.log("error in updating cart", error);
     }
-  }
-
+  };
 
   return (
     <div className="cart">
@@ -72,9 +78,17 @@ const CartDesign = ({
         </div>
 
         <div className="add-remove-item">
-        <button className="remove-item" onClick={handleQuantity} name="addItem">+</button>
-        <div>{quantity}</div>
-        <button className="add-item" onClick={handleQuantity} name="subItem">-</button>
+          <button
+            className="remove-item"
+            onClick={handleQuantity}
+            name="addItem"
+          >
+            +
+          </button>
+          <div>{quantity}</div>
+          <button className="add-item" onClick={handleQuantity} name="subItem">
+            -
+          </button>
         </div>
       </div>
     </div>
