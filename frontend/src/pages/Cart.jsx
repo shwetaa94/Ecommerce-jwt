@@ -5,6 +5,7 @@ import "./Cart.css";
 import CartDesign from "../components/CartDesign";
 import axios from 'axios';
 import {toast} from "react-hot-toast" ;
+import CartSum from "../components/CartSum";
 
 const Cart = () => {
   
@@ -32,6 +33,7 @@ const Cart = () => {
 
   return (
     <Layout>
+      <div className="cart-main">
       <div className="cartt">
         {cart.map((cartItemss) => {
           return (
@@ -56,6 +58,10 @@ const Cart = () => {
             </>
           );
         })}
+      </div>
+      <div className="cartsum">
+        <CartSum />
+      </div>
       </div>
     </Layout>
   );

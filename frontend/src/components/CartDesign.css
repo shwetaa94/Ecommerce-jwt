@@ -3,6 +3,7 @@
     display: flex; /* Use flex for responsive layout */
     flex-direction: row;
     width: 100%; /* Full-width on large screens */
+  
     margin: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;

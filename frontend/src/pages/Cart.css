@@ -1,6 +1,15 @@
-
+.cart-main{
+    width:100%;
+    display: flex;
+}
 .cartt{
+    width:70%;
     display: flex;
     flex-direction: column;
-    margin: 5% 10%;
+    margin: 5% 5%;
+}
+.cartsum{
+    width:30%;
+    margin: 5% 5% 5% 0%;
+  
 }
